@@ -1,0 +1,155 @@
+/* Estilo do container principal */
+.dashboard {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Título */
+.dashboard h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Lista de eventos */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-item strong {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.event-item div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Botões de edição e exclusão */
+.edit-button,
+.delete-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Estilos para o modal */
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  text-align: left;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-weight: bold;
+}
+
+.modal input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+/* Mensagem quando não há eventos */
+p {
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 1rem;
+}

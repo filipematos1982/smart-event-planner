@@ -1,42 +1,77 @@
+/* Estilos Globais */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Remove scroll horizontal */
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%; /* Garante que ocupe 100% da largura */
+}
+
+main {
+  flex: 1;
   padding: 2rem;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  width: 100%; /* Ajusta para 100% de largura */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Navbar */
+.navbar {
+  background-color: #007bff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:black;
+  width: 100%; /* Garante que ocupe toda a largura */
+  box-sizing: border-box; /* Inclui padding dentro da largura */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.navbar h1 {
+  font-size: 2rem;
+  margin: 0;
 }
 
-.card {
-  padding: 2em;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 
-.read-the-docs {
-  color: #888;
+.nav-links a {
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: whitesmoke;
+}
+
+/* Footer */
+footer {
+  background-color: #007bff;
+  color: black;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box; /* Inclui padding dentro da largura */
+}
+
+/* Ajuste opcional para telas grandes */
+main h1 {
+  font-size: 3rem;
 }
