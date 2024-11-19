@@ -8,6 +8,45 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+.dashboard {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.filters input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #f9f9f9;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
 
 /* Título */
 .dashboard h1 {
@@ -152,4 +191,18 @@ p {
   font-size: 1.2rem;
   color: #777;
   margin-top: 1rem;
+}
+.filter-section {
+  margin-bottom: 1rem;
+}
+
+.filter-section label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.filter-section input {
+  padding: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }

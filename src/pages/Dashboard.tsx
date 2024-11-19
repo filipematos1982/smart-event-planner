@@ -2,19 +2,25 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import './Dashboard.css';
 
-Modal.setAppElement('#root'); // Garante acessibilidade do modal
-
 const Dashboard: React.FC = () => {
   const [events, setEvents] = useState<{ name: string; date: string }[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editIndex, setEditIndex] = useState<number | null>(null);
-  const [editName, setEditName] = useState('');
-  const [editDate, setEditDate] = useState('');
+  const [filterDate, setFilterDate] = useState<string>('');
+  const [filteredEvents, setFilteredEvents] = useState(events);
 
   useEffect(() => {
     const savedEvents = JSON.parse(localStorage.getItem('events') || '[]');
     setEvents(savedEvents);
+    setFilteredEvents(savedEvents); // Inicializa com todos os eventos.
   }, []);
+
+  useEffect(() => {
+    if (filterDate) {
+      const filtered = events.filter((event) => event.date >= filterDate);
+      setFilteredEvents(filtered);
+    } else {
+      setFilteredEvents(events);
+    }
+  }, [filterDate, events]);
 
   const deleteEvent = (index: number) => {
     const updatedEvents = events.filter((_, i) => i !== index);
@@ -22,76 +28,30 @@ const Dashboard: React.FC = () => {
     localStorage.setItem('events', JSON.stringify(updatedEvents));
   };
 
-  const openEditModal = (index: number) => {
-    setEditIndex(index);
-    setEditName(events[index].name);
-    setEditDate(events[index].date);
-    setIsModalOpen(true);
-  };
-
-  const handleEditSubmit = () => {
-    if (editIndex !== null) {
-      const updatedEvents = events.map((event, i) =>
-        i === editIndex ? { name: editName, date: editDate } : event
-      );
-      setEvents(updatedEvents);
-      localStorage.setItem('events', JSON.stringify(updatedEvents));
-      setIsModalOpen(false);
-    }
-  };
-
   return (
     <div className="dashboard">
       <h1>Upcoming Events</h1>
-      {events.length > 0 ? (
+      <div className="filter-section">
+        <label htmlFor="filterDate">Filter by Date:</label>
+        <input
+          type="date"
+          id="filterDate"
+          value={filterDate}
+          onChange={(e) => setFilterDate(e.target.value)}
+        />
+      </div>
+      {filteredEvents.length > 0 ? (
         <ul>
-          {events.map((event, index) => (
+          {filteredEvents.map((event, index) => (
             <li key={index} className="event-item">
               <strong>{event.name}</strong> - {event.date}
-              <div>
-                <button onClick={() => openEditModal(index)} className="edit-button">Edit</button>
-                <button onClick={() => deleteEvent(index)} className="delete-button">Delete</button>
-              </div>
+              <button onClick={() => deleteEvent(index)} className="delete-button">Delete</button>
             </li>
           ))}
         </ul>
       ) : (
         <p>No events available.</p>
       )}
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        contentLabel="Edit Event"
-        className="modal"
-        overlayClassName="overlay"
-      >
-        <h2>Edit Event</h2>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <label>
-            Event Name:
-            <input
-              type="text"
-              value={editName}
-              onChange={(e) => setEditName(e.target.value)}
-              required
-            />
-          </label>
-          <label>
-            Event Date:
-            <input
-              type="date"
-              value={editDate}
-              onChange={(e) => setEditDate(e.target.value)}
-              required
-            />
-          </label>
-          <div className="modal-buttons">
-            <button onClick={handleEditSubmit} className="save-button">Save</button>
-            <button onClick={() => setIsModalOpen(false)} className="cancel-button">Cancel</button>
-          </div>
-        </form>
-      </Modal>
     </div>
   );
 };
