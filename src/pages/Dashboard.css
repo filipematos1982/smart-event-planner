@@ -1,52 +1,21 @@
-/* Estilo do container principal */
+/* Estilo Geral */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e9ecef;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container Principal do Dashboard */
 .dashboard {
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-.dashboard {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.filters {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
-
-.filters input {
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.event-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: #f9f9f9;
-  margin: 0.5rem 0;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.delete-button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-
 
 /* Título */
 .dashboard h1 {
@@ -55,7 +24,30 @@
   margin-bottom: 1rem;
 }
 
-/* Lista de eventos */
+/* Seção de Filtros */
+.filter-section {
+  margin-bottom: 1rem;
+}
+
+.filter-section label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.filter-section input {
+  padding: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Mensagem de Feedback */
+.feedback-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Lista de Eventos */
 ul {
   list-style: none;
   padding: 0;
@@ -65,7 +57,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: #f9f9f9;
   padding: 1rem;
   margin: 0.5rem 0;
   border: 1px solid #ddd;
@@ -76,6 +68,7 @@ ul {
 .event-item strong {
   font-size: 1.2rem;
   color: #333;
+  margin-right: auto;
 }
 
 .event-item div {
@@ -83,38 +76,64 @@ ul {
   gap: 0.5rem;
 }
 
-/* Botões de edição e exclusão */
+/* Botões */
 .edit-button,
-.delete-button {
-  background-color: #007bff;
-  color: white;
+.delete-button,
+.save-button,
+.cancel-button {
   border: none;
   padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  
+}
+
+/* Botão de Edição */
+.edit-button {
+  background-color: orange;
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+  background-color: darkorange;
 }
 
+/* Botão de Exclusão */
 .delete-button {
-  background-color: #dc3545;
+  background-color: red;
 }
 
 .delete-button:hover {
-  background-color: #c82333;
+  background-color: darkred;
 }
 
-/* Estilos para o modal */
+/* Botão de Salvamento */
+.save-button {
+  background-color: green;
+}
+
+.save-button:hover {
+  background-color: darkgreen;
+}
+
+/* Botão de Cancelamento */
+.cancel-button {
+  background-color: #6c757d;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+/* Modal */
 .modal {
   background: white;
   padding: 2rem;
   border-radius: 8px;
   max-width: 500px;
   margin: 0 auto;
-  position: relative;
   text-align: left;
 }
 
@@ -153,56 +172,96 @@ ul {
   font-size: 1rem;
 }
 
+/* Botões do Modal */
 .modal-buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.save-button {
-  background-color: #28a745;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.save-button:hover {
-  background-color: #218838;
-}
-
-.cancel-button {
-  background-color: #6c757d;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cancel-button:hover {
-  background-color: #5a6268;
-}
-
-/* Mensagem quando não há eventos */
+/* Mensagem de Sem Eventos */
 p {
   font-size: 1.2rem;
   color: #777;
   margin-top: 1rem;
 }
-.filter-section {
-  margin-bottom: 1rem;
+
+/* Estilização da Lista */
+ul {
+  padding: 0;
 }
 
-.filter-section label {
-  margin-right: 0.5rem;
-  font-weight: bold;
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
-.filter-section input {
-  padding: 0.3rem;
+.event-item div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: darkorange;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+.edit-section {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f9f9f9;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
+}
+
+.save-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: darkgreen;
+}
+
+.cancel-button {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: darkgray;
 }

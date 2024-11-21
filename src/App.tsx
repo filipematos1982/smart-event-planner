@@ -17,7 +17,6 @@ const App: React.FC = () => {
           <Route path="/create-event" element={<CreateEvent />} />
         </Routes>
       </main>
-      <footer>© 2024 Smart Event Planner. All rights reserved.</footer>
     </Router>
   );
 };

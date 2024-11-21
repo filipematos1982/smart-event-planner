@@ -1,50 +1,58 @@
 import React, { useState } from 'react';
-import './CreateEvent.css'; // Estilizar o formulário
+import Footer from '../components/Footer';
+import './CreateEvent.css';
 
 const CreateEvent: React.FC = () => {
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!eventName.trim()) {
-      alert("Event Name is required!");
-      return;
-    }
-  
-    if (!eventDate) {
-      alert("Event Date is required!");
+  const handleCreateEvent = () => {
+    if (!eventName || !eventDate) {
+      setMessage('Please fill out all fields.');
+      setTimeout(() => setMessage(''), 3000);
       return;
     }
 
     const newEvent = { name: eventName, date: eventDate };
-    const existingEvents = JSON.parse(localStorage.getItem('events') || '[]');
-    localStorage.setItem('events', JSON.stringify([...existingEvents, newEvent]));
+    const savedEvents = JSON.parse(localStorage.getItem('events') || '[]');
+    const updatedEvents = [...savedEvents, newEvent];
+    localStorage.setItem('events', JSON.stringify(updatedEvents));
 
-    alert(`Event Created: ${eventName} on ${eventDate}`);
     setEventName('');
     setEventDate('');
+    setMessage('Event created successfully!');
+    setTimeout(() => setMessage(''), 3000);
   };
 
   return (
     <div className="create-event">
       <h1>Create a New Event</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Event Name:</label>
+      <div className="form">
+        <label htmlFor="eventName">Event Name:</label>
         <input
           type="text"
+          id="eventName"
           value={eventName}
           onChange={(e) => setEventName(e.target.value)}
         />
-        <label>Event Date:</label>
+
+        <label htmlFor="eventDate">Event Date:</label>
         <input
           type="date"
+          id="eventDate"
           value={eventDate}
           onChange={(e) => setEventDate(e.target.value)}
         />
-        <button type="submit">Create Event</button>
-      </form>
+
+        <button onClick={handleCreateEvent} className="create-button">
+          Create Event
+        </button>
+
+        {message && <p className="feedback-message">{message}</p>}
+      </div>
+
+      <Footer />
     </div>
   );
 };
